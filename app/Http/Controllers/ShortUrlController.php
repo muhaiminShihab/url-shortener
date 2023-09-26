@@ -12,4 +12,17 @@ class ShortUrlController extends Controller
         // return to view
         return view('home');
     }
+
+    // create short url
+    public function store(Request $request)
+    {
+        // data validate
+        $request->validate(
+            [
+                'long_url' => 'required'
+            ]
+        );
+
+        dd($request->all());
+    }
 }

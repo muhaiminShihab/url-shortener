@@ -7,7 +7,9 @@
             @include('layout.menu')
 
             <div class="col-md-6 mx-auto mt-150">
-                <form action="#">
+                <form action="{{ route('create_short_url') }}" method="POST">
+                    @csrf
+
                     <div class="text-center mb-5">
                         <h2 class="fw-bold">Welcome to URL Shortener</h2>
                         <p>Make your long URL's short, easy and free !!</p>
@@ -16,13 +18,13 @@
                     <div class="row">
                         <div class="col-md-10">
                             <div class="form-group">
-                                <input type="url" name="" id="" placeholder="Enter your URL here..."
-                                    class="form-control py-3">
+                                <input type="url" name="long_url" placeholder="Enter your URL here..."
+                                    class="form-control py-3" required>
                             </div>
                         </div>
                         <div class="col-md-2 text-end">
                             <div class="form-group mt-3 mt-md-0">
-                                <button class="col-12 btn btn-primary btn-custom px-4 py-3">
+                                <button type="submit" class="col-12 btn btn-primary btn-custom px-4 py-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round"

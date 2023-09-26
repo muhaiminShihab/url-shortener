@@ -23,3 +23,6 @@ Route::prefix('auth')->controller(UserController::class)->group(function () {
     Route::match(['get', 'post'], '/sign-in', 'sign_in')->name('sign_in_page');
     Route::match(['get', 'post'], '/sign-up', 'sign_up')->name('sign_up_page');
 });
+
+// create short url
+Route::post('/create-short-url', [ShortUrlController::class, 'store'])->name('create_short_url');
