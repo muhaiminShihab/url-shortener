@@ -19,15 +19,15 @@ svg {
     margin-top: 150px;
 }
 
+.btn-custom svg {
+    width: 20px;
+}
+
 /* main area start */
 .main-area {
     width: 100%;
     min-height: 100vh;
     max-height: 100%;
     background-image: linear-gradient(to top, #96fbc4 0%, #f9f586 100%);
-}
-
-.main-area .btn-custom svg {
-    width: 20px;
 }
 /* main area end */

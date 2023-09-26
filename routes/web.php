@@ -27,9 +27,15 @@ Route::prefix('auth')->controller(AuthController::class)->group(function () {
 });
 
 // dashboard pages
-Route::prefix('app')->controller(UserController::class)->group(function () {
-    Route::get('/dashboard', 'dashboard')->name('dashboard_page');
+Route::prefix('app')->middleware('auth')->group(function () {
+    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard_page');
+
+    // remove url
+    Route::get('/remove-url/{id}', [ShortUrlController::class, 'destroy'])->name('remove_url');
 });
 
 // create short url
 Route::post('/create-short-url', [ShortUrlController::class, 'store'])->name('create_short_url');
+
+// access short url
+Route::get('/{key}', [ShortUrlController::class, 'access'])->name('access_short_url');

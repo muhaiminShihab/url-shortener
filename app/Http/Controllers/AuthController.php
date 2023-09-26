@@ -32,7 +32,7 @@ class AuthController extends Controller
                     return redirect()->route('home_page');
                 } else{
                     // redirect to dashboard
-                    return redirect()->route('dashboard');
+                    return redirect()->route('dashboard_page');
                 }
             } else {
                 Alert::error('Hey !!', 'Something is wrong.');

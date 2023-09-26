@@ -45,7 +45,40 @@ class ShortUrlController extends Controller
             ]
         );
 
+        // destroy session
+        session()->forget('long_url');
+
         // redirect to dashboard
+        Alert::success('Hey !!', 'URL generated successfully.');
         return redirect()->route('dashboard_page');
+    }
+
+    // destroy url
+    public function destroy($id)
+    {
+        $url = ShortUrl::findOrFail($id);
+        $url->delete();
+
+        // return back
+        Alert::success('Hey !!', 'URL removed successfully.');
+        return back();
+    }
+
+    // access url
+    public function access($key)
+    {
+        $url = ShortUrl::where('short_url', $key)->first();
+        if ( !is_null($url) ) {
+            // update url
+            $url->update(
+                [
+                    'total_click' => $url->total_click + 1
+                ]
+            );
+
+            return redirect($url->main_url);
+        } else {
+            return redirect()->route('home_page');
+        }
     }
 }
