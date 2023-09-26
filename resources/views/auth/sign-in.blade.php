@@ -15,16 +15,16 @@
                         </div>
                         <form action="{{ route('sign_in_page') }}" method="POST">
                             @csrf
-                            
+
                             <div class="form-group mb-3">
-                                <label for="" class="form-label">Email</label>
-                                <input type="email" name="" id="" placeholder="abc@xyz.com"
-                                    class="form-control">
+                                <label class="form-label">Email</label>
+                                <input type="email" name="email" id="" placeholder="abc@xyz.com"
+                                    class="form-control" required>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="" class="form-label">Password</label>
-                                <input type="password" name="" id="" placeholder="********"
-                                    class="form-control">
+                                <label class="form-label">Password</label>
+                                <input type="password" name="password" id="" placeholder="********"
+                                    class="form-control" required>
                             </div>
                             <div class="form-group text-end">
                                 <button type="submit" class="btn btn-primary">Sign-in</button>
