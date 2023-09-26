@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ShortUrlController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// home page
+Route::get('/', [ShortUrlController::class, 'index'])->name('home_page');
+
+// auth pages
+Route::prefix('auth')->controller(UserController::class)->group(function () {
+    Route::match(['get', 'post'], '/sign-in', 'sign_in')->name('sign_in_page');
+    Route::match(['get', 'post'], '/sign-up', 'sign_up')->name('sign_up_page');
 });

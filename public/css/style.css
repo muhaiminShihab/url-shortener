@@ -1,0 +1,33 @@
+/* import custom font */
+@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;600;700&display=swap');
+
+/* global css */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Martian Mono', monospace !important;
+}
+
+svg {
+    width: 100%;
+}
+
+.mt-150 {
+    margin-top: 150px;
+}
+
+/* main area start */
+.main-area {
+    width: 100%;
+    min-height: 100vh;
+    max-height: 100%;
+    background-image: linear-gradient(to top, #96fbc4 0%, #f9f586 100%);
+}
+
+.main-area .btn-custom svg {
+    width: 20px;
+}
+/* main area end */
