@@ -18,7 +18,7 @@
                     <div class="row">
                         <div class="col-md-10">
                             <div class="form-group">
-                                <input type="url" name="long_url" placeholder="Enter your URL here..."
+                                <input type="url" name="long_url" placeholder="Enter your URL here..." value="{{ session()->has('long_url') ? session()->get('long_url') : '' }}"
                                     class="form-control py-3" required>
                             </div>
                         </div>

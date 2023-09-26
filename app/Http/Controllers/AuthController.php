@@ -26,9 +26,14 @@ class AuthController extends Controller
             if ( Auth::attempt($credentials) ) {
                 $request->session()->regenerate();
 
-                // redirect to dashboard
-                // return redirect()->route('dashboard');
-                return back();
+                // check session
+                if ( session()->has('long_url') ) {
+                    // redirect to home page
+                    return redirect()->route('home_page');
+                } else{
+                    // redirect to dashboard
+                    return redirect()->route('dashboard');
+                }
             } else {
                 Alert::error('Hey !!', 'Something is wrong.');
                 return back();
