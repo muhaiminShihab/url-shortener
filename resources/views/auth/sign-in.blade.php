@@ -13,7 +13,9 @@
                             <h2 class="fw-bold">Sign-in to Account</h2>
                             <p>Make your long URL's short, easy and free !!</p>
                         </div>
-                        <form action="#">
+                        <form action="{{ route('sign_in_page') }}" method="POST">
+                            @csrf
+                            
                             <div class="form-group mb-3">
                                 <label for="" class="form-label">Email</label>
                                 <input type="email" name="" id="" placeholder="abc@xyz.com"

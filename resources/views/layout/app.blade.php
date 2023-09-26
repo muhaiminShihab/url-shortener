@@ -11,9 +11,13 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     {{-- include style.css --}}
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
 </head>
 
 <body>
+    {{-- include sweet alert --}}
+    @include('sweetalert::alert')
+    
     {{-- include section --}}
     @yield('page_section')
 

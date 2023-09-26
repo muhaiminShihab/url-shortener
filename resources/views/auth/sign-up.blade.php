@@ -13,21 +13,23 @@
                             <h2 class="fw-bold">Sign-up to Account</h2>
                             <p>Make your long URL's short, easy and free !!</p>
                         </div>
-                        <form action="#">
+                        <form action="{{ route('sign_up_page') }}" method="POST">
+                            @csrf
+
                             <div class="form-group mb-3">
-                                <label for="" class="form-label">Name</label>
-                                <input type="text" name="" id="" placeholder="Muhaimin Shihab"
-                                    class="form-control">
+                                <label class="form-label">Name</label>
+                                <input type="text" name="name" placeholder="Muhaimin Shihab"
+                                    class="form-control" required>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="" class="form-label">Email</label>
-                                <input type="email" name="" id="" placeholder="abc@xyz.com"
-                                    class="form-control">
+                                <label class="form-label">Email</label>
+                                <input type="email" name="email" placeholder="abc@xyz.com"
+                                    class="form-control" required>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="" class="form-label">Password</label>
-                                <input type="password" name="" id="" placeholder="********"
-                                    class="form-control">
+                                <label class="form-label">Password</label>
+                                <input type="password" name="password" placeholder="********"
+                                    class="form-control" required>
                             </div>
                             <div class="form-group text-end">
                                 <button type="submit" class="btn btn-primary">Sign-up</button>
