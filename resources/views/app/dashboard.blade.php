@@ -25,7 +25,7 @@
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $url->main_url }}</td>
-                                        <td>{{ URL::to('/') . '/' . $url->short_url }}</td>
+                                        <td>{{ $url->short_url }}</td>
                                         <td>{{ number_format($url->total_click, 2) }}</td>
                                         <td>
                                             <div class="btn-group">

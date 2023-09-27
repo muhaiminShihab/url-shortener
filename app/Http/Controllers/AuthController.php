@@ -79,7 +79,7 @@ class AuthController extends Controller
         }
     }
 
-    // sign-out
+    // function to sign-out
     public function sign_out()
     {
         Auth::logout();

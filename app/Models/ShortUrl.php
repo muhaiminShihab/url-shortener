@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\URL;
 
 class ShortUrl extends Model
 {
@@ -15,4 +16,10 @@ class ShortUrl extends Model
         'short_url',
         'total_click'
     ];
+
+    // get short url
+    public function getShortUrlAttribute($value)
+    {
+        return URL::to('/') . '/' . $value;
+    }
 }

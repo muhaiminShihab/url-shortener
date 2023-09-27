@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\ShortUrlController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// auth routes
+Route::post('/sign-in', [AuthController::class, 'sign_in']);
+Route::post('/sign-out', [AuthController::class, 'sign_out']);
+
+// auth routes
+Route::middleware('auth:sanctum')->group(function () {
+    // user details
+    Route::get('/user', [AuthController::class, 'user']);
+
+    // short url routes
+    Route::post('/create-short-url', [ShortUrlController::class, 'store']);
+    Route::post('/remove-short-url', [ShortUrlController::class, 'destroy']);
+    Route::get('/get-short-urls', [ShortUrlController::class, 'index']);
 });

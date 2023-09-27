@@ -30,8 +30,8 @@ Route::prefix('auth')->controller(AuthController::class)->group(function () {
 Route::prefix('app')->middleware('auth')->group(function () {
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard_page');
 
-    // remove url
-    Route::get('/remove-url/{id}', [ShortUrlController::class, 'destroy'])->name('remove_url');
+    // remove short url
+    Route::get('/remove-short-url/{id}', [ShortUrlController::class, 'destroy'])->name('remove_url');
 });
 
 // create short url

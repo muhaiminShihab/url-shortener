@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    // show dashboard
+    // function to show dashboard
     public function dashboard()
     {
         $urls = ShortUrl::where('user_id', Auth::id())->get();

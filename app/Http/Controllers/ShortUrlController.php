@@ -10,14 +10,14 @@ use Illuminate\Support\Str;
 
 class ShortUrlController extends Controller
 {
-    // show home page
+    // function to show home page
     public function index()
     {
         // return to view
         return view('home');
     }
 
-    // create short url
+    // function to create short url
     public function store(Request $request)
     {
         // data validate
@@ -53,7 +53,7 @@ class ShortUrlController extends Controller
         return redirect()->route('dashboard_page');
     }
 
-    // destroy url
+    // function to destroy short url
     public function destroy($id)
     {
         $url = ShortUrl::findOrFail($id);
@@ -64,7 +64,7 @@ class ShortUrlController extends Controller
         return back();
     }
 
-    // access url
+    // function to access short url
     public function access($key)
     {
         $url = ShortUrl::where('short_url', $key)->first();
@@ -78,7 +78,8 @@ class ShortUrlController extends Controller
 
             return redirect($url->main_url);
         } else {
-            return redirect()->route('home_page');
+            // return redirect()->route('home_page');
+            return redirect('404');
         }
     }
 }
