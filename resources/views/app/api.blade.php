@@ -22,8 +22,8 @@
                                     <td>POST</td>
                                     <td>This is for authentication and get access token.</td>
                                     <td>
-                                        <div class="btn btn-sm bg-black text-white m-2">Email</div>
-                                        <div class="btn btn-sm bg-black text-white m-2">Password</div>
+                                        <div class="btn btn-sm bg-black text-white m-2">email</div>
+                                        <div class="btn btn-sm bg-black text-white m-2">password</div>
                                     </td>
                                 </tr>
                                 <tr>
