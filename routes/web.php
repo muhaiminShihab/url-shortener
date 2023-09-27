@@ -32,6 +32,9 @@ Route::prefix('app')->middleware('auth')->group(function () {
 
     // remove short url
     Route::get('/remove-short-url/{id}', [ShortUrlController::class, 'destroy'])->name('remove_url');
+
+    // api page
+    Route::get('/api-docs', [ShortUrlController::class, 'api_docs'])->name('api_docs_page');
 });
 
 // create short url

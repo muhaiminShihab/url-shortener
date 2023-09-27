@@ -82,4 +82,10 @@ class ShortUrlController extends Controller
             return redirect('404');
         }
     }
+
+    // function to show api docs page
+    public function api_docs()
+    {
+        return view('app.api');
+    }
 }
