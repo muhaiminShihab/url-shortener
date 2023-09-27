@@ -57,7 +57,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>{{ URL::to('/') . '/api/short-urls' }}</td>
+                                    <td>{{ URL::to('/') . '/api/get-short-urls' }}</td>
                                     <td>GET</td>
                                     <td>This is to get users all url.</td>
                                     <td>
