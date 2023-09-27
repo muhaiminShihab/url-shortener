@@ -79,7 +79,7 @@ class ShortUrlController extends Controller
             return redirect($url->main_url);
         } else {
             // return redirect()->route('home_page');
-            return redirect('404');
+            return abort('404');
         }
     }
 
