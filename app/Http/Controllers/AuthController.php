@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-Use Alert;
+use Alert;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -14,7 +14,7 @@ class AuthController extends Controller
     public function sign_in(Request $request)
     {
         // check request method
-        if ( $request->isMethod( 'post' ) ) {
+        if ($request->isMethod('post')) {
             $request->validate(
                 [
                     'email' => 'required|email',
@@ -23,19 +23,19 @@ class AuthController extends Controller
             );
 
             $credentials = $request->only('email', 'password');
-            if ( Auth::attempt($credentials) ) {
+            if (Auth::attempt($credentials)) {
                 $request->session()->regenerate();
 
                 // check session
-                if ( session()->has('long_url') ) {
+                if (session()->has('long_url')) {
                     // redirect to home page
                     return redirect()->route('home_page');
-                } else{
+                } else {
                     // redirect to dashboard
                     return redirect()->route('dashboard_page');
                 }
             } else {
-                Alert::error('Hey !!', 'Something is wrong.');
+                Alert::error('Hey!', 'Something is wrong.');
                 return back();
             }
         } else {
@@ -48,20 +48,18 @@ class AuthController extends Controller
     public function sign_up(Request $request)
     {
         // check request method
-        if ( $request->isMethod( 'post' ) ) {
+        if ($request->isMethod('post')) {
             // data validate
             $request->validate(
                 [
                     'name' => 'required',
                     'email' => 'required|email|unique:users,email',
-                    'password' => 'required'
+                    'password' => 'required|min:8'
                 ]
             );
 
-            // dd($request->all());
-
             // store data
-            User::create(
+            $user = User::create(
                 [
                     'name' => $request->input('name'),
                     'email' => $request->input('email'),
@@ -70,9 +68,9 @@ class AuthController extends Controller
             );
 
             // return back
-            Alert::success('Hey !!', 'Registration successful.');
-            return back();
-
+            Auth::loginUsingId($user->id);
+            Alert::success('Hey!', 'Registration successful.');
+            return to_route('dashboard_page');
         } else {
             // return to view
             return view('auth.sign-up');

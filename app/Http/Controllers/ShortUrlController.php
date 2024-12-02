@@ -32,7 +32,7 @@ class ShortUrlController extends Controller
             session()->put('long_url', $request->input('long_url'));
 
             // redirect to sign-in
-            Alert::info('Hey !!', 'Sign-in to short your URL.');
+            Alert::info('Hey!', 'Sign-in to short your URL.');
             return redirect()->route('sign_in_page');
         }
 
@@ -49,7 +49,7 @@ class ShortUrlController extends Controller
         session()->forget('long_url');
 
         // redirect to dashboard
-        Alert::success('Hey !!', 'URL generated successfully.');
+        Alert::success('Hey!', 'URL generated successfully.');
         return redirect()->route('dashboard_page');
     }
 
@@ -60,7 +60,7 @@ class ShortUrlController extends Controller
         $url->delete();
 
         // return back
-        Alert::success('Hey !!', 'URL removed successfully.');
+        Alert::success('Hey!', 'URL removed successfully.');
         return back();
     }
 

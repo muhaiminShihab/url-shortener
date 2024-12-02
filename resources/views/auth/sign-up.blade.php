@@ -18,18 +18,26 @@
 
                             <div class="form-group mb-3">
                                 <label class="form-label">Name</label>
-                                <input type="text" name="name" placeholder="Muhaimin Shihab"
-                                    class="form-control" required>
+                                <input type="text" name="name" placeholder="Muhaimin Shihab" class="form-control"
+                                    required>
+                                @error('name')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label">Email</label>
-                                <input type="email" name="email" placeholder="abc@xyz.com"
+                                <input type="email" name="email" placeholder="shihab@url-shortener.com"
                                     class="form-control" required>
+                                @error('email')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label">Password</label>
-                                <input type="password" name="password" placeholder="********"
-                                    class="form-control" required>
+                                <input type="password" name="password" placeholder="********" class="form-control" required>
+                                @error('password')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                             <div class="form-group text-end">
                                 <button type="submit" class="btn btn-primary">Sign-up</button>
