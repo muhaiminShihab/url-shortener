@@ -1,0 +1,59 @@
+version: "3.8"
+
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: url-shortener
+        container_name: url-shortener
+        restart: unless-stopped
+        working_dir: /var/www
+        volumes:
+            - .:/var/www
+            - ./docker-compose/php/local.ini:/usr/local/etc/php/conf.d/local.ini # PHP config if needed
+        networks:
+            - url-shortener-network
+        depends_on:
+            - db
+        environment:
+            SERVICE_NAME: app
+            SERVICE_TAGS: dev
+
+    db:
+        image: mysql:8.0
+        container_name: url-shortener-db
+        restart: unless-stopped
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: url_shortener
+            MYSQL_USER: user
+            MYSQL_PASSWORD: password
+        ports:
+            - "3306:3306"
+        volumes:
+            - db-data:/var/lib/mysql
+        networks:
+            - url-shortener-network
+
+    nginx:
+        image: nginx:alpine
+        container_name: url-shortener-nginx
+        restart: unless-stopped
+        ports:
+            - "80:80" # HTTP port
+            # - "443:443" # Uncomment this for HTTPS (SSL) support
+        volumes:
+            - .:/var/www:cached
+            - ./docker-compose/nginx:/etc/nginx/conf.d
+        depends_on:
+            - app
+        networks:
+            - url-shortener-network
+
+networks:
+    url-shortener-network:
+        driver: bridge
+
+volumes:
+    db-data:
