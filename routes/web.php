@@ -30,15 +30,15 @@ Route::prefix('auth')->controller(AuthController::class)->group(function () {
 Route::prefix('app')->middleware('auth')->group(function () {
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard_page');
 
-    // remove short url
-    Route::get('/remove-short-url/{id}', [ShortUrlController::class, 'destroy'])->name('remove_url');
+    // create url
+    Route::post('/create-url', [ShortUrlController::class, 'store'])->name('create_url');
 
-    // api page
-    Route::get('/api-docs', [ShortUrlController::class, 'api_docs'])->name('api_docs_page');
+    // delete url
+    Route::get('/delete-url/{id}', [ShortUrlController::class, 'destroy'])->name('remove_url');
+
+    // api doc
+    Route::get('/api-doc', [ShortUrlController::class, 'api_doc'])->name('api_doc');
 });
 
-// create short url
-Route::post('/create-short-url', [ShortUrlController::class, 'store'])->name('create_short_url');
-
-// access short url
-Route::get('/{key}', [ShortUrlController::class, 'access'])->name('access_short_url');
+// access url
+Route::get('/{key}', [ShortUrlController::class, 'access']);

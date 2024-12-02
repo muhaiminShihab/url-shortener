@@ -26,7 +26,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', [AuthController::class, 'user']);
 
     // short url routes
-    Route::post('/create-short-url', [ShortUrlController::class, 'store']);
-    Route::post('/remove-short-url', [ShortUrlController::class, 'destroy']);
-    Route::get('/get-short-urls', [ShortUrlController::class, 'index']);
+    Route::prefix('url')->controller(ShortUrlController::class)->group(function () {
+        Route::post('/create', 'store');
+        Route::post('/delete', 'destroy');
+        Route::get('/list', 'index');
+    });
 });

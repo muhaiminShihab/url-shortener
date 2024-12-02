@@ -41,7 +41,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>{{ URL::to('/') . '/api/create-short-url' }}</td>
+                                    <td>{{ URL::to('/') . '/api/url/create' }}</td>
                                     <td>POST</td>
                                     <td>This is for create short url.</td>
                                     <td>
@@ -49,7 +49,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>{{ URL::to('/') . '/api/remove-short-url' }}</td>
+                                    <td>{{ URL::to('/') . '/api/url/delete' }}</td>
                                     <td>POST</td>
                                     <td>This is for remove short url.</td>
                                     <td>
@@ -57,7 +57,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>{{ URL::to('/') . '/api/get-short-urls' }}</td>
+                                    <td>{{ URL::to('/') . '/api/url/list' }}</td>
                                     <td>GET</td>
                                     <td>This is to get users all url.</td>
                                     <td>

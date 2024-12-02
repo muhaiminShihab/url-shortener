@@ -84,7 +84,7 @@ class ShortUrlController extends Controller
     }
 
     // function to show api docs page
-    public function api_docs()
+    public function api_doc()
     {
         return view('app.api');
     }

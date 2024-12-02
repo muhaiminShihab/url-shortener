@@ -7,7 +7,7 @@
             @include('layout.menu')
 
             <div class="col-md-6 mx-auto mt-150">
-                <form action="{{ route('create_short_url') }}" method="POST">
+                <form action="{{ route('create_url') }}" method="POST">
                     @csrf
 
                     <div class="text-center mb-5">
