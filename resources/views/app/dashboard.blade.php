@@ -21,12 +21,12 @@
                                     <th>Total Click</th>
                                     <th>Actions</th>
                                 </tr>
-                                @foreach ($urls as $key => $url)
+                                @forelse ($urls as $key => $url)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $url->main_url }}</td>
                                         <td>{{ $url->short_url }}</td>
-                                        <td>{{ number_format($url->total_click, 2) }}</td>
+                                        <td>{{ $url->total_click }}</td>
                                         <td>
                                             <div class="btn-group">
                                                 <a href="{{ route('remove_url', $url->id) }}" class="btn btn-sm btn-custom border">
@@ -40,7 +40,11 @@
                                             </div>
                                         </td>
                                     </tr>
-                                @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan="5" class="text-center">No data found</td>
+                                    </tr>
+                                @endforelse
                             </table>
                         </div>
                     </div>
